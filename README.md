@@ -1,4 +1,4 @@
-# OSMOSIS NODE (BROKEN)
+# OSMOSIS NODE (INCOMPLETE)
 
 ## Build Project
 - Update Chain ID
