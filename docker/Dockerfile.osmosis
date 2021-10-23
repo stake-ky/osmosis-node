@@ -19,9 +19,3 @@ RUN make install
 RUN osmosisd version --long
 # Install Cosmovisor
 RUN go install github.com/cosmos/cosmos-sdk/cosmovisor/cmd/cosmovisor@latest
-
-# # Run osmosisd by default, omit entrypoint to ease using container with osmosiscli
-# EXPOSE 26656
-# EXPOSE 26657
-# EXPOSE 1317
-# EXPOSE 9090

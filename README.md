@@ -11,15 +11,6 @@
     ```bash
     YOUR_MONIKER=<your_moniker> && sed -i 's+$YOUR_MONIKER+'$YOUR_MONIKER'+g' docker-compose.yml
     ```
-<!-- - Add the `osmosis` repository as a git submodule
-    ```bash
-    git submodule add -f https://github.com/osmosis-labs/osmosis osmosis
-    ```
-- Checkout the most recent release
-    ```bash
-    cd osmosis && git checkout -f v4.1.0 && cd ..
-    ```
-    > Update the version above to reflect the latest release -->
 - Build the containers
     ```bash
     docker-compose up -d --build
@@ -84,9 +75,16 @@
     ```bash
     docker exec -it osmosis bash -c 'cosmovisor start'
     ```
+- Check your sync status
+    ```bash
+    docker exec -it osmosis bash -c 'osmosisd status 2>&1 | jq "{catching_up: .SyncInfo.catching_up}"'
+    ```
+- Check that the latest block height is catching up
+    ```bash
+    docker exec -it osmosis bash -c 'osmosisd status 2>&1 | jq "{latest_block_height: .SyncInfo.latest_block_height}"'
+    ```    
 
 ## Helpful Snippets
-
 - If you need to access the container directly use the following
     ```bash
     docker exec -it osmosis /bin/sh
@@ -94,10 +92,6 @@
 - Check the status of your node
     ```bash
     docker exec -it osmosis bash -c 'osmosisd status'
-    ```
-- Start `osmosisd`
-    ```bash
-    docker exec -it osmosis bash -c 'osmosisd start'
     ```
 
 ## Inspiration
