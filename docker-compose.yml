@@ -10,8 +10,8 @@ services:
       args:
         - OSMOSIS_VERSION=v3.1.0
     environment:
-      - CHAIN_ID=osmosis-1
-      - YOUR_MONIKER=Stake.KY.Testing
+      - CHAIN_ID=$CHAIN_ID
+      - YOUR_MONIKER=$YOUR_MONIKER
       - DAEMON_HOME=/root/.osmosisd
       - DAEMON_NAME=osmosisd
       - DAEMON_ALLOW_DOWNLOAD_BINARIES=false
