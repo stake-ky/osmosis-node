@@ -9,7 +9,6 @@ services:
       dockerfile: ./docker/Dockerfile.osmosis
       args:
         - OSMOSIS_VERSION=v3.1.0
-        - COSMOVISOR_VERSION=v0.42.9
     environment:
       - CHAIN_ID=$CHAIN_ID
       - YOUR_MONIKER=$YOUR_MONIKER

@@ -1,3 +1,4 @@
+# OSMOSIS NODE (BROKEN)
 
 ## Build Project
 - Update Chain ID
@@ -10,7 +11,7 @@
     ```bash
     YOUR_MONIKER=<your_moniker> && sed -i 's+$YOUR_MONIKER+'$YOUR_MONIKER'+g' docker-compose.yml
     ```
-- Add the `osmosis` repository as a git submodule
+<!-- - Add the `osmosis` repository as a git submodule
     ```bash
     git submodule add -f https://github.com/osmosis-labs/osmosis osmosis
     ```
@@ -18,7 +19,7 @@
     ```bash
     cd osmosis && git checkout -f v4.1.0 && cd ..
     ```
-    > Update the version above to reflect the latest release
+    > Update the version above to reflect the latest release -->
 - Build the containers
     ```bash
     docker-compose up -d --build
