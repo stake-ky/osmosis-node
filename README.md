@@ -80,6 +80,10 @@
     ```bash
     docker exec -it osmosis bash -c 'cosmovisor version'
     ```
+- Start `cosmovisor`
+    ```bash
+    docker exec -it osmosis bash -c 'cosmovisor start'
+    ```
 
 ## Helpful Snippets
 
