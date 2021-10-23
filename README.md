@@ -21,7 +21,7 @@
     ```bash
     docker exec -it osmosis bash -c 'osmosisd config chain-id $CHAIN_ID'
     ```
-- Intialise the osmosis working directory
+- Initialise the osmosis working directory
     ```bash
     docker exec -it osmosis bash -c 'osmosisd init --chain-id=$CHAIN_ID $YOUR_MONIKER'
     ```
@@ -36,7 +36,7 @@
 
 ## Update Peers and Min Gas Price
 - Update `persistent_peers` in `.osmosisd/config/config.toml`
-    > Current persistent peers can be obtaind from the [osmosis-1 peer list](https://github.com/osmosis-labs/networks/blob/main/peers.md)
+    > Current persistent peers can be obtained from the [osmosis-1 peer list](https://github.com/osmosis-labs/networks/blob/main/peers.md)
 
     Example:
         ```bash
