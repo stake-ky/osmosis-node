@@ -1,0 +1,38 @@
+FROM golang:latest
+# Update the system
+RUN apt update && apt upgrade -y
+# Install dependencies 
+RUN apt install -y git build-essential curl jq
+# Confirm Go version
+RUN go version
+# Install osmosisd
+WORKDIR /app
+RUN git clone https://github.com/osmosis-labs/osmosis
+WORKDIR /app/osmosis
+ARG OSMOSIS_VERSION
+RUN git checkout $OSMOSIS_VERSION
+# Prepare for the upgrade
+RUN make build
+# Update your $GOPATH/bin/osmosisd binary
+RUN make install
+# Confirm Osmosis version
+RUN osmosisd version --long
+# Install Cosmovisor
+# RUN go install github.com/cosmos/cosmos-sdk/cosmovisor/cmd/cosmovisor@latest
+WORKDIR /app
+RUN git clone https://github.com/cosmos/cosmos-sdk
+WORKDIR /app/cosmos-sdk
+ARG COSMOVISOR_VERSION
+RUN git checkout $COSMOVISOR_VERSION
+RUN make cosmovisor
+RUN ls -la $GOPATH/bin
+RUN cp cosmovisor/cosmovisor $GOPATH/bin/cosmovisor
+RUN ls -la $GOPATH/bin
+RUN ls -la $GOPATH/bin/cosmovisor
+RUN cosmovisor version
+
+# # Run osmosisd by default, omit entrypoint to ease using container with osmosiscli
+# EXPOSE 26656
+# EXPOSE 26657
+# EXPOSE 1317
+# EXPOSE 9090
